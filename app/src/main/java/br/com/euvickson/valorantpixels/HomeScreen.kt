@@ -16,8 +16,6 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.euvickson.valorantpixels.ui.theme.OtherFonts
@@ -27,7 +25,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-    ValorantPixelsTheme {
+    ValorantPixelsTheme (darkTheme = true) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -40,7 +38,9 @@ fun HomeScreen() {
                 drawerContent = {
 
                     Text(
-                        modifier = Modifier.align(CenterHorizontally).padding(top = 10.dp),
+                        modifier = Modifier
+                            .align(CenterHorizontally)
+                            .padding(top = 10.dp),
                         fontSize = 30.sp,
                         fontFamily = OtherFonts,
                         color = Color(0xFF24CE00),
@@ -52,7 +52,9 @@ fun HomeScreen() {
                             .align(CenterHorizontally),
                         color = Color.LightGray
                     )
-                    Text(text = "Coleção de Miras", modifier = Modifier.align(CenterHorizontally).padding(vertical = 10.dp), fontSize = 20.sp)
+                    Text(text = "Coleção de Miras", modifier = Modifier
+                        .align(CenterHorizontally)
+                        .padding(vertical = 10.dp), fontSize = 20.sp)
 
                     IconButton(
                         modifier = Modifier.fillMaxWidth(),
@@ -68,19 +70,23 @@ fun HomeScreen() {
                     LazyColumn(modifier = Modifier
                         .padding(horizontal = 15.dp)
                         .clip(RoundedCornerShape(15.dp))
-                        .background(Color.LightGray), content = {
+                        .background(Color.DarkGray), content = {
                         val listaDePersonagens = listOf("Brimstone", "Fade", "Sova", "Viper")
                         items(4) {
                             AgenteItem(agentsButtonValue, listaDePersonagens[it])
                         }
                     })
                     Text(
-                        modifier = Modifier.align(CenterHorizontally).padding(vertical = 10.dp),
+                        modifier = Modifier
+                            .align(CenterHorizontally)
+                            .padding(vertical = 10.dp),
                         fontSize = 20.sp,
                         text = "Comunidade"
                     )
                     Text(
-                        modifier = Modifier.align(CenterHorizontally).padding(vertical = 10.dp),
+                        modifier = Modifier
+                            .align(CenterHorizontally)
+                            .padding(vertical = 10.dp),
                         fontSize = 20.sp,
                         text = "Quem Somos"
                     )
@@ -89,9 +95,11 @@ fun HomeScreen() {
                 drawerState = drawerState,
             ) {
                 Scaffold(
+                    modifier = Modifier.height(50.dp),
                     topBar = {
                         CenterAlignedTopAppBar(
                             title = {},
+                            colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color(0xFF24CE00)),
                             navigationIcon = {
                                 IconButton(onClick = { scope.launch { if (drawerState.isClosed) drawerState.open() else drawerState.close() } }) {
                                     Icon(
@@ -99,7 +107,7 @@ fun HomeScreen() {
                                         contentDescription = "Menu Icon"
                                     )
                                 }
-                            }
+                            },
                         )
                     },
                     content = { innerPadding ->
