@@ -12,10 +12,15 @@ import androidx.compose.material.icons.outlined.KeyboardArrowRight
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import br.com.euvickson.valorantpixels.ui.theme.OtherFonts
 import br.com.euvickson.valorantpixels.ui.theme.ValorantPixelsTheme
 import kotlinx.coroutines.launch
 
@@ -32,38 +37,56 @@ fun HomeScreen() {
             var agentsButtonValue by remember { mutableStateOf(false) }
 
             ModalNavigationDrawer(
-
                 drawerContent = {
 
-                    Text(text = "Valorant Pixels")
+                    Text(
+                        modifier = Modifier.align(CenterHorizontally).padding(top = 10.dp),
+                        fontSize = 30.sp,
+                        fontFamily = OtherFonts,
+                        color = Color(0xFF24CE00),
+                        text = "Valorant Pixels"
+                    )
                     Divider(
                         modifier = Modifier
                             .width(300.dp)
-                            .align(Alignment.CenterHorizontally), color = Color.LightGray
+                            .align(CenterHorizontally),
+                        color = Color.LightGray
                     )
-                    Text(text = "Coleção de Miras")
+                    Text(text = "Coleção de Miras", modifier = Modifier.align(CenterHorizontally).padding(vertical = 10.dp), fontSize = 20.sp)
 
                     IconButton(
                         modifier = Modifier.fillMaxWidth(),
                         onClick = { agentsButtonValue = !agentsButtonValue }) {
-                        Row {
-                            Text(text = "Agentes")
+                        Row (verticalAlignment = Alignment.Bottom) {
+                            Text(text = "Agentes",fontSize = 20.sp)
                             Icon(
                                 imageVector = if (agentsButtonValue) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowRight,
                                 contentDescription = "Ícone de ver mais"
                             )
                         }
                     }
-                    LazyColumn(content = {
+                    LazyColumn(modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                        .clip(RoundedCornerShape(15.dp))
+                        .background(Color.LightGray), content = {
                         val listaDePersonagens = listOf("Brimstone", "Fade", "Sova", "Viper")
                         items(4) {
                             AgenteItem(agentsButtonValue, listaDePersonagens[it])
                         }
                     })
-                    Text(text = "Comunidade")
-                    Text(text = "Quem Somos")
+                    Text(
+                        modifier = Modifier.align(CenterHorizontally).padding(vertical = 10.dp),
+                        fontSize = 20.sp,
+                        text = "Comunidade"
+                    )
+                    Text(
+                        modifier = Modifier.align(CenterHorizontally).padding(vertical = 10.dp),
+                        fontSize = 20.sp,
+                        text = "Quem Somos"
+                    )
+
                 },
-                drawerState = drawerState
+                drawerState = drawerState,
             ) {
                 Scaffold(
                     topBar = {
@@ -107,7 +130,11 @@ private fun ColumnScope.AgenteItem(agentsButtonValue: Boolean, nomeDoAgente: Str
             IconButton(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = { agentMapsButtonValue = !agentMapsButtonValue }) {
-                Row(modifier = Modifier.clip(RoundedCornerShape(15.dp)).background(Color.LightGray).padding(horizontal = 75.dp)) {
+                Row(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(15.dp))
+                        .padding(horizontal = 75.dp)
+                ) {
                     Text(text = nomeDoAgente)
                     Icon(
                         imageVector = if (agentMapsButtonValue) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowRight,
@@ -118,33 +145,33 @@ private fun ColumnScope.AgenteItem(agentsButtonValue: Boolean, nomeDoAgente: Str
             AnimatedVisibility(
                 visible = agentMapsButtonValue,
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
+                    .align(CenterHorizontally)
             ) {
                 Column(modifier = Modifier.wrapContentHeight()) {
                     Button(
                         modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
+                            .align(CenterHorizontally)
                             .width(150.dp),
                         onClick = { /*TODO*/ }) {
                         Text(text = "Ascent")
                     }
                     Button(
                         modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
+                            .align(CenterHorizontally)
                             .width(150.dp),
                         onClick = { /*TODO*/ }) {
                         Text(text = "Bind")
                     }
                     Button(
                         modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
+                            .align(CenterHorizontally)
                             .width(150.dp),
                         onClick = { /*TODO*/ }) {
                         Text(text = "Haven")
                     }
                     Button(
                         modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
+                            .align(CenterHorizontally)
                             .width(150.dp),
                         onClick = { /*TODO*/ }) {
                         Text(text = "Icebox")
