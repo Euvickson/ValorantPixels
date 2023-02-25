@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-    ValorantPixelsTheme (darkTheme = true) {
+    ValorantPixelsTheme(darkTheme = true) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -52,15 +52,17 @@ fun HomeScreen() {
                             .align(CenterHorizontally),
                         color = Color.LightGray
                     )
-                    Text(text = "Coleção de Miras", modifier = Modifier
-                        .align(CenterHorizontally)
-                        .padding(vertical = 10.dp), fontSize = 20.sp)
+                    Text(
+                        text = "Coleção de Miras", modifier = Modifier
+                            .align(CenterHorizontally)
+                            .padding(vertical = 10.dp), fontSize = 20.sp
+                    )
 
                     IconButton(
                         modifier = Modifier.fillMaxWidth(),
                         onClick = { agentsButtonValue = !agentsButtonValue }) {
-                        Row (verticalAlignment = Alignment.Bottom) {
-                            Text(text = "Agentes",fontSize = 20.sp)
+                        Row(verticalAlignment = Alignment.Bottom) {
+                            Text(text = "Agentes", fontSize = 20.sp)
                             Icon(
                                 imageVector = if (agentsButtonValue) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowRight,
                                 contentDescription = "Ícone de ver mais"
@@ -95,11 +97,15 @@ fun HomeScreen() {
                 drawerState = drawerState,
             ) {
                 Scaffold(
-                    modifier = Modifier.height(50.dp),
                     topBar = {
                         CenterAlignedTopAppBar(
+                            modifier = Modifier.height(50.dp),
                             title = {},
-                            colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color(0xFF24CE00)),
+                            colors = TopAppBarDefaults.smallTopAppBarColors(
+                                containerColor = Color(
+                                    0xFF24CE00
+                                )
+                            ),
                             navigationIcon = {
                                 IconButton(onClick = { scope.launch { if (drawerState.isClosed) drawerState.open() else drawerState.close() } }) {
                                     Icon(
@@ -116,11 +122,18 @@ fun HomeScreen() {
                             contentPadding = innerPadding,
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            items(1) {
-                                Text(text = "Teste 1")
-                                Text(text = "Teste 2")
-                                Text(text = "Teste 3")
-                                Text(text = "Teste 4")
+                            item {
+                                Column {
+                                    Text(text = "Teste 1", color = Color.White)
+                                    Text(text = "Teste 2", color = Color.White)
+                                    Text(text = "Teste 3", color = Color.White)
+                                    Text(text = "Teste 4", color = Color.White)
+                                    Text(text = "Teste 5", color = Color.White)
+                                    Text(text = "Teste 6", color = Color.White)
+                                    Text(text = "Teste 7", color = Color.White)
+                                    Text(text = "Teste 8", color = Color.White)
+                                    Text(text = "Teste 9", color = Color.White)
+                                }
                             }
                         }
                     }
