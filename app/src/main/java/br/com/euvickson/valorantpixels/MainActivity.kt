@@ -1,14 +1,10 @@
 package br.com.euvickson.valorantpixels
 
 import android.os.Bundle
-import android.view.Window
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
-import androidx.compose.ui.graphics.Color
+import br.com.euvickson.valorantpixels.ui.screens.AimScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.euvickson.valorantpixels.ui.screens.AimScreen
 import br.com.euvickson.valorantpixels.ui.theme.OtherFonts
 import br.com.euvickson.valorantpixels.ui.theme.ValorantPixelsTheme
 import kotlinx.coroutines.launch
@@ -117,25 +118,7 @@ fun HomeScreen() {
                         )
                     },
                     content = { innerPadding ->
-                        //The main screen itens will be placed right here
-                        LazyColumn(
-                            contentPadding = innerPadding,
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            item {
-                                Column {
-                                    Text(text = "Teste 1", color = Color.White)
-                                    Text(text = "Teste 2", color = Color.White)
-                                    Text(text = "Teste 3", color = Color.White)
-                                    Text(text = "Teste 4", color = Color.White)
-                                    Text(text = "Teste 5", color = Color.White)
-                                    Text(text = "Teste 6", color = Color.White)
-                                    Text(text = "Teste 7", color = Color.White)
-                                    Text(text = "Teste 8", color = Color.White)
-                                    Text(text = "Teste 9", color = Color.White)
-                                }
-                            }
-                        }
+                        AimScreen(innerPadding)
                     }
                 )
             }
