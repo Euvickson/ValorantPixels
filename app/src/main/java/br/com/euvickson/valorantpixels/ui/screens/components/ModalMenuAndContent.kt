@@ -1,7 +1,8 @@
-package br.com.euvickson.valorantpixels
+package br.com.euvickson.valorantpixels.ui.screens.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import br.com.euvickson.valorantpixels.ui.screens.AimScreen
 import br.com.euvickson.valorantpixels.ui.theme.OtherFonts
 import br.com.euvickson.valorantpixels.ui.theme.ValorantPixelsTheme
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,13 +51,19 @@ fun HomeScreen() {
                     Divider(
                         modifier = Modifier
                             .width(300.dp)
-                            .align(CenterHorizontally),
+                            .align(CenterHorizontally)
+                        ,
                         color = Color.LightGray
                     )
                     Text(
                         text = "Coleção de Miras", modifier = Modifier
                             .align(CenterHorizontally)
-                            .padding(vertical = 10.dp), fontSize = 20.sp
+                            .padding(vertical = 10.dp)
+                            .clickable {
+                                scope.launch {
+                                    drawerState.close()
+                                }
+                            }, fontSize = 20.sp
                     )
 
                     IconButton(
@@ -82,14 +89,24 @@ fun HomeScreen() {
                     Text(
                         modifier = Modifier
                             .align(CenterHorizontally)
-                            .padding(vertical = 10.dp),
+                            .padding(vertical = 10.dp)
+                            .clickable {
+                                scope.launch {
+                                    drawerState.close()
+                                }
+                            },
                         fontSize = 20.sp,
                         text = "Comunidade"
                     )
                     Text(
                         modifier = Modifier
                             .align(CenterHorizontally)
-                            .padding(vertical = 10.dp),
+                            .padding(vertical = 10.dp)
+                            .clickable {
+                                scope.launch {
+                                    drawerState.close()
+                                }
+                            },
                         fontSize = 20.sp,
                         text = "Quem Somos"
                     )
